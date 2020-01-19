@@ -34,7 +34,7 @@ public class TodoResource {
 		date.setHours(8);
 		date.setMinutes(45);
 		date.setSeconds(20);
-		return new Todo(Integer.parseInt(id), "Todo bean", id, date, false);
+		return new Todo((long) Integer.parseInt(id), "Todo bean", id, date, false);
 	}
 
 	@GetMapping(path = "/users/{username}/todos")
@@ -63,13 +63,15 @@ public class TodoResource {
 
 	@PostMapping(path = "/users/{username}/todos")
 	public ResponseEntity<Void> createTodo(@PathVariable String username, @RequestBody Todo todo) {
-		todo.setId(-1);
+		todo.setId((long) -1);
 		Todo savedTodo = todoService.save(todo);
 		//Location
 		//get current resource url
 		 URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedTodo.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
+	
 	
 	@GetMapping("/basicAuth")
 	public ResponseEntity<String> authentication(){

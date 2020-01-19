@@ -2,14 +2,22 @@ package com.tanaka.rest.webservices.restfulwebservices;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Todo {
-	private long id;
+	
+	@GeneratedValue
+	@Id        
+	private Long id;
 	String username;
 	private String description;
 	private Date targetDate;
 	private Boolean completed;
-	
-	public Todo(long id,String username, String description, Date targetDate, Boolean completed) {
+
+	public Todo(Long id, String username, String description, Date targetDate, Boolean completed) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -17,45 +25,56 @@ public class Todo {
 		this.targetDate = targetDate;
 		this.completed = completed;
 	}
-public Todo() {
-	
-}
-	
-	public long getId() {
+
+	public Todo() {
+	}
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public Date getTargetDate() {
 		return targetDate;
 	}
+
 	public void setTargetDate(Date targetDate) {
 		this.targetDate = targetDate;
 	}
+
 	public Boolean getCompleted() {
 		return completed;
 	}
+
 	public void setCompleted(Boolean completed) {
 		this.completed = completed;
 	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	@Override
 	public String toString() {
 		return "Todo [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
 				+ targetDate + ", completed=" + completed + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -63,6 +82,7 @@ public Todo() {
 		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -76,6 +96,5 @@ public Todo() {
 			return false;
 		return true;
 	}
-	
-	
+
 }

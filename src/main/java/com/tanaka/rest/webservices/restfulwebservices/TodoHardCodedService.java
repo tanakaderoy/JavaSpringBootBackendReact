@@ -17,10 +17,10 @@ class TodoHardCodedService {
 		date.setHours(12+7);
 		date.setMinutes(45);
 		date.setSeconds(20);
-		todos.add(new Todo(++idCounter, "tanaka", "Play fifa", date, false));
-		todos.add(new Todo(++idCounter, "tanaka", "Play red dead", date, false));
+		todos.add(new Todo((long) ++idCounter, "tanaka", "Play fifa", date, false));
+		todos.add(new Todo((long) ++idCounter, "tanaka", "Play red dead", date, false));
 
-		todos.add(new Todo(++idCounter, "tanaka", "Play assassins creed", date, false));
+		todos.add(new Todo((long) ++idCounter, "tanaka", "Play assassins creed", date, false));
 
 	}
 
@@ -39,7 +39,7 @@ class TodoHardCodedService {
 	
 	public Todo save(Todo todo) {
 		if(todo.getId()==-1 || todo.getId() == 0) {
-			todo.setId(++idCounter);
+			todo.setId((long) ++idCounter);
 			todos.add(todo);
 		
 		}else {
